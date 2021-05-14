@@ -7,6 +7,6 @@ export const sections = [{
     component: <UserList />,
 },{
     key: '1',
-    title: 'UserList',
+    title: 'Single User',
     component: <SingleUser />,
 }];

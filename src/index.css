@@ -1,1 +1,11 @@
 @import '~antd/dist/antd.css';
+
+body, #root, .ant-layout, .ant-layout-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
+.ant-layout-content {
+    padding: 48px;
+}

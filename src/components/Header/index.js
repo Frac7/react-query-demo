@@ -10,8 +10,8 @@ export default ({ setSection }) => {
 
   return (
     <Header>
-      <Row justify="center">
-        <Col>
+      <Row>
+        <Col offset={6} xs={12}>
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['0']} onClick={handleClick}>
             {sections.map(section => <Menu.Item key={section.key}>{section.title}</Menu.Item>)}
           </Menu>

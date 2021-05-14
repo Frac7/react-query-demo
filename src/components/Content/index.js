@@ -6,9 +6,9 @@ import { sections } from './utils';
 const { Content } = Layout;
 
 export default ({ section }) => (
-    <Content>
+  <Content>
     <Row>
-      <Col>
+      <Col xs={12} offset={6}>
         {sections[section].component}
       </Col>
     </Row>
