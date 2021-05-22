@@ -40,8 +40,6 @@ export default () => {
     return <Alert message={error} type="error" />;
   }
 
-  console.log(hasNextPage);
-
   return (
     <Card
       actions={[

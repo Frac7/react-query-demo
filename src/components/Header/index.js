@@ -1,25 +1,24 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { Row, Col, Layout, Menu } from 'antd';
 
-import { sections } from '../Content/utils';
+import { Link, useLocation } from 'react-router-dom';
+
+import { sections } from '../../utils';
 
 const { Header } = Layout;
 
-export default ({ setSection }) => {
-  const handleClick = ({ key }) => setSection(key);
+export default () => {
+  const { pathname } = useLocation();
 
   return (
     <Header>
       <Row>
         <Col offset={6} xs={12}>
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['0']}
-            onClick={handleClick}
-          >
+          <Menu theme="dark" mode="horizontal" selectedKeys={[pathname]}>
             {sections.map(section => (
-              <Menu.Item key={section.key}>{section.title}</Menu.Item>
+              <Menu.Item key={section.path}>
+                <Link to={section.path}>{section.title}</Link>
+              </Menu.Item>
             ))}
           </Menu>
         </Col>
