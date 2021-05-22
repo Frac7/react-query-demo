@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Header from './components/Header';
+import Home from './components/Home';
 import Content from './components/Content';
 
 import { sections } from './utils';
@@ -20,6 +21,9 @@ export default () => (
             <Content section={section} />
           </Route>
         ))}
+        <Route path="/">
+          <Home />
+        </Route>
         <Footer />
       </Layout>
     </Switch>
