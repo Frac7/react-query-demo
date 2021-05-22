@@ -11,7 +11,7 @@ export default () => {
     fetchNextPage,
     hasNextPage,
   } = useInfiniteQuery(
-    'UserInfiniteList',
+    'InfiniteUserList',
     ({ pageParam = 1 }) =>
       fetch(`https://reqres.in/api/users?delay=5&page=${pageParam}`).then(res =>
         res.json(),

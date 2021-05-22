@@ -6,7 +6,7 @@ const { Meta } = Card;
 
 export default () => {
   const { error, data, isFetched } = useQuery(
-    'UserList',
+    'CachedUser',
     () =>
       fetch('https://reqres.in/api/users/1?delay=5').then(res => res.json()),
     {
