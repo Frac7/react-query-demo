@@ -11,19 +11,11 @@ export default () => {
   const handleStop = () => {
     queryClient.cancelQueries('CancelUserQuery');
   };
-
-  const { isLoading, isIdle, error, data } = useQuery(
-    'CancelUserQuery',
-    endpoint,
-  );
-
   const handleRetry = () => {
     queryClient.refetchQueries('CancelUserQuery');
   };
 
-  if (error) {
-    return <Alert message={error} type="error" />;
-  }
+  const { isLoading, isIdle, data } = useQuery('CancelUserQuery', endpoint);
 
   if (isIdle) {
     return (

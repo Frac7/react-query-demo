@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 export default () => {
   const { isLoading, error, failureCount } = useQuery('FetchUserError', () =>
-    fetch('https://reqres.in/api/users/42').then(res => {
+    fetch('https://reqres.in/api/users/42?delay=3').then(res => {
       console.log(res);
       if (res.ok) {
         res.json();

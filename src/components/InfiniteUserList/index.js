@@ -1,28 +1,26 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { Row, Col, Card, List, Avatar, Spin, Alert, Button } from 'antd';
+import { Row, Col, Card, List, Avatar, Spin, Button } from 'antd';
 import { useInfiniteQuery } from 'react-query';
 
 export default () => {
-  const {
-    isLoading,
-    error,
-    data,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useInfiniteQuery(
-    'InfiniteUserList',
-    ({ pageParam = 1 }) =>
-      fetch(`https://reqres.in/api/users?delay=3&page=${pageParam}`).then(res =>
-        res.json(),
-      ),
-    {
-      getNextPageParam: currentPage =>
-        currentPage.page === currentPage.total_pages
-          ? undefined
-          : currentPage.page + 1,
-    },
-  );
+  const { isLoading, data, isFetchingNextPage, fetchNextPage, hasNextPage } =
+    useInfiniteQuery(
+      'InfiniteUserList',
+      (
+        { pageParam = 1 }, // pageParam comes from 'getNextPageParam' function
+      ) =>
+        fetch(`https://reqres.in/api/users?delay=3&page=${pageParam}`).then(
+          res => res.json(),
+        ),
+      {
+        getNextPageParam: (
+          currentPage, //  currentPage is the current result obtained from the fetch query, it contains information about the current page and the total pages
+        ) =>
+          currentPage.page === currentPage.total_pages
+            ? undefined // Returning undefined, the 'hasNextPage' will be false - i.e. this is the last page
+            : currentPage.page + 1,
+      },
+    );
 
   const handleClick = () => fetchNextPage();
 
@@ -34,10 +32,6 @@ export default () => {
         </Col>
       </Row>
     );
-  }
-
-  if (error) {
-    return <Alert message={error} type="error" />;
   }
 
   return (
@@ -59,7 +53,9 @@ export default () => {
             <List.Item key={item.id}>
               <List.Item.Meta
                 avatar={<Avatar src={item.avatar} />}
-                title={`${item.first_name} ${item.last_name}`}
+                title={`${(item && item.first_name) || ''} ${
+                  (item && item.last_name) || ''
+                }`}
                 description={item.email}
               />
             </List.Item>

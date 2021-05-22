@@ -6,12 +6,14 @@ import {
   Col,
   Card,
   Avatar,
-  Alert,
   Skeleton,
   Button,
   Typography,
+  Alert,
 } from 'antd';
 import { useQuery, useQueryClient, useMutation } from 'react-query';
+
+import { put } from './utils';
 
 const { Meta } = Card;
 const { Paragraph } = Typography;
@@ -20,34 +22,23 @@ export default () => {
   const [name, setName] = useState('');
 
   const queryClient = useQueryClient();
-  const {
-    isLoading: isQueryLoading,
-    error: queryError,
-    data: queryData,
-  } = useQuery('SingleUser', () =>
-    fetch('https://reqres.in/api/users/1?delay=3').then(res => res.json()),
+  // First query to fetch user information
+  const { isLoading: isQueryLoading, data: queryData } = useQuery(
+    'SingleUser',
+    () =>
+      fetch('https://reqres.in/api/users/1?delay=3').then(res => res.json()),
   );
+  // Mutation for updating user information
   const {
     isLoading: isMutationLoading,
-    error: mutationError,
     data: mutationData,
     ...mutation
-  } = useMutation(
-    () =>
-      fetch('https://reqres.in/api/users/1?delay=3', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          first_name: name,
-        }),
-      }).then(res => res.json()),
-    {
-      onSuccess: newData =>
-        queryClient.setQueryData('SingleUser', old => ({ ...old, ...newData })),
-    },
-  );
+  } = useMutation(put.bind(null, name), {
+    onSuccess: (
+      newData, // If the mutation is sucessful, new data can be set using 'setQueryData' function, without the needed to re-invoke the fetch
+    ) =>
+      queryClient.setQueryData('SingleUser', old => ({ ...old, ...newData })),
+  });
 
   const item = useMemo(
     () => ({ ...queryData?.data, ...mutationData }),
@@ -58,11 +49,7 @@ export default () => {
       setName(item.first_name);
     }
   }, [item]);
-  const handleMutate = () => mutation.mutate({ ...item, full_name: name });
-
-  if (queryError || mutationError) {
-    return <Alert message={queryError || mutationError} type="error" />;
-  }
+  const handleMutate = () => mutation.mutate({ ...item, full_name: name }); // Triggers the mutation (PUT call)
 
   return (
     <Row gutter={[0, 8]}>
