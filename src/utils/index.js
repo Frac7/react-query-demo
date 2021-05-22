@@ -3,6 +3,7 @@ import InfiniteUserList from '../components/InfiniteUserList';
 import CachedUser from '../components/CachedUser';
 import CancelUserQuery from '../components/CancelUserQuery';
 import UserMutation from '../components/UserMutation';
+import FetchUserError from '../components/FetchUserError';
 
 export const sections = [
   {
@@ -29,5 +30,10 @@ export const sections = [
     path: '/user-mutation',
     title: 'User Mutation',
     component: <UserMutation />,
+  },
+  {
+    path: '/fetch-user-error',
+    title: 'Fetch User Error',
+    component: <FetchUserError />,
   },
 ];

@@ -12,8 +12,8 @@ export default () => {
 
   return (
     <Header>
-      <Row>
-        <Col offset={6} xs={12}>
+      <Row justify="center">
+        <Col>
           <Menu theme="dark" mode="horizontal" selectedKeys={[pathname]}>
             {sections.map(section => (
               <Menu.Item key={section.path}>
