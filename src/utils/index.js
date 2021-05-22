@@ -2,6 +2,7 @@ import UserList from '../components/UserList';
 import InfiniteUserList from '../components/InfiniteUserList';
 import CachedUser from '../components/CachedUser';
 import CancelUserQuery from '../components/CancelUserQuery';
+import UserMutation from '../components/UserMutation';
 
 export const sections = [
   {
@@ -23,5 +24,10 @@ export const sections = [
     path: '/cancel-user-query',
     title: 'Cancel User Query',
     component: <CancelUserQuery />,
+  },
+  {
+    path: '/user-mutation',
+    title: 'User Mutation',
+    component: <UserMutation />,
   },
 ];

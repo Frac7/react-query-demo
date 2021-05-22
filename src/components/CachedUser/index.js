@@ -8,7 +8,7 @@ export default () => {
   const { error, data, isFetched } = useQuery(
     'CachedUser',
     () =>
-      fetch('https://reqres.in/api/users/1?delay=5').then(res => res.json()),
+      fetch('https://reqres.in/api/users/1?delay=3').then(res => res.json()),
     {
       initialData: {
         data: {
