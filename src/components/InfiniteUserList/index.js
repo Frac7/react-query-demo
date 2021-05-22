@@ -13,7 +13,7 @@ export default () => {
   } = useInfiniteQuery(
     'UserInfiniteList',
     ({ pageParam = 1 }) =>
-      fetch(`https://reqres.in/api/users?page=${pageParam}&delay=5`).then(res =>
+      fetch(`https://reqres.in/api/users?delay=5&page=${pageParam}`).then(res =>
         res.json(),
       ),
     {
