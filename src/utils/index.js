@@ -1,6 +1,6 @@
 import UserList from '../components/UserList';
 import InfiniteUserList from '../components/InfiniteUserList';
-import SingleUser from '../components/SingleUser';
+import CachedUser from '../components/CachedUser';
 
 export const sections = [
   {
@@ -14,8 +14,8 @@ export const sections = [
     component: <InfiniteUserList />,
   },
   {
-    path: '/single-user',
-    title: 'Single User',
-    component: <SingleUser />,
+    path: '/cached-user',
+    title: 'Cached User',
+    component: <CachedUser />,
   },
 ];
