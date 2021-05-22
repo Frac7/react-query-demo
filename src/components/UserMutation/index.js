@@ -78,7 +78,11 @@ export default () => {
         <Card
           actions={
             !isQueryLoading && [
-              <Button onClick={handleMutate} loading={isMutationLoading}>
+              <Button
+                onClick={handleMutate}
+                loading={isMutationLoading}
+                disabled={!name}
+              >
                 Update
               </Button>,
             ]

@@ -17,8 +17,22 @@ export default () => {
     endpoint,
   );
 
+  const handleRetry = () => {
+    queryClient.refetchQueries('CancelUserQuery');
+  };
+
   if (error) {
     return <Alert message={error} type="error" />;
+  }
+
+  if (isIdle) {
+    return (
+      <Alert
+        message="The request was canceled"
+        type="warning"
+        action={<Button onClick={handleRetry}>Retry</Button>}
+      />
+    );
   }
 
   const item = data?.data;
