@@ -17,7 +17,7 @@ export default () => (
       <Layout>
         <Header />
         {sections.map(section => (
-          <Route path={section.path} key={section.key}>
+          <Route path={section.path} key={section.path}>
             <Content section={section} />
           </Route>
         ))}
