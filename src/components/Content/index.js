@@ -14,7 +14,7 @@ export default ({ section }) => (
       </Col>
     </Row>
     <Row>
-      <Col xs={12} offset={6}>
+      <Col offset={6} xs={12}>
         {sections[section].component}
       </Col>
     </Row>
