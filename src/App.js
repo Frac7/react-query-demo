@@ -21,7 +21,7 @@ export default () => (
             <Content section={section} />
           </Route>
         ))}
-        <Route path="/">
+        <Route exact path="/">
           <Home />
         </Route>
         <Footer />
