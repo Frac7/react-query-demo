@@ -33,7 +33,7 @@ export default () => {
     isLoading: isMutationLoading,
     data: mutationData,
     ...mutation
-  } = useMutation(put.bind(null, name), {
+  } = useMutation(put, {
     onSuccess: (
       newData, // If the mutation is sucessful, new data can be set using 'setQueryData' function, without the needed to re-invoke the fetch
     ) =>
@@ -49,7 +49,7 @@ export default () => {
       setName(item.first_name);
     }
   }, [item]);
-  const handleMutate = () => mutation.mutate({ ...item, full_name: name }); // Triggers the mutation (PUT call)
+  const handleMutate = () => mutation.mutate({ ...item, first_name: name }); // Triggers the mutation (PUT call)
 
   return (
     <Row gutter={[0, 8]}>
