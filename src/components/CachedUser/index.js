@@ -28,9 +28,7 @@ export default () => {
         avatar={<Avatar src={item?.avatar} />}
         title={
           isFetched ? (
-            `${(item && item.first_name) || ''} ${
-              (item && item.last_name) || ''
-            }`
+            `${item?.first_name || ''} ${item?.last_name || ''}`
           ) : (
             <Skeleton />
           )

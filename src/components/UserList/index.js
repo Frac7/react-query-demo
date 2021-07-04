@@ -26,9 +26,7 @@ export default () => {
           <List.Item key={item.id}>
             <List.Item.Meta
               avatar={<Avatar src={item.avatar} />}
-              title={`${(item && item.first_name) || ''} ${
-                (item && item.last_name) || ''
-              }`}
+              title={`${item?.first_name || ''} ${item?.last_name || ''}`}
               description={item.email}
             />
           </List.Item>

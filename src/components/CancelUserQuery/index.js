@@ -45,9 +45,7 @@ export default () => {
           isLoading ? (
             <Skeleton />
           ) : (
-            `${(item && item.first_name) || ''} ${
-              (item && item.last_name) || ''
-            }`
+            `${item?.first_name || ''} ${item?.last_name || ''}`
           )
         }
         description={item?.email}

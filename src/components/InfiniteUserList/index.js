@@ -22,8 +22,6 @@ export default () => {
       },
     );
 
-  const handleClick = () => fetchNextPage();
-
   if (isLoading) {
     return (
       <Row align="middle" justify="center">
@@ -38,7 +36,7 @@ export default () => {
     <Card
       actions={[
         hasNextPage && (
-          <Button onClick={handleClick} loading={isFetchingNextPage}>
+          <Button onClick={fetchNextPage} loading={isFetchingNextPage}>
             Load More
           </Button>
         ),
@@ -53,9 +51,7 @@ export default () => {
             <List.Item key={item.id}>
               <List.Item.Meta
                 avatar={<Avatar src={item.avatar} />}
-                title={`${(item && item.first_name) || ''} ${
-                  (item && item.last_name) || ''
-                }`}
+                title={`${item?.first_name || ''} ${item?.last_name || ''}`}
                 description={item.email}
               />
             </List.Item>
