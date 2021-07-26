@@ -48,11 +48,11 @@ export default () => {
           itemLayout="horizontal"
           dataSource={page.data}
           renderItem={item => (
-            <List.Item key={item.id}>
+            <List.Item key={item?.id}>
               <List.Item.Meta
-                avatar={<Avatar src={item.avatar} />}
+                avatar={<Avatar src={item?.avatar} />}
                 title={`${item?.first_name || ''} ${item?.last_name || ''}`}
-                description={item.email}
+                description={item?.email}
               />
             </List.Item>
           )}

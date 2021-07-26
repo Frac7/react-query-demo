@@ -45,9 +45,7 @@ export default () => {
     [queryData, mutationData],
   );
   useEffect(() => {
-    if (item) {
-      setName(item.first_name);
-    }
+    setName(item.first_name);
   }, [item]);
   const handleMutate = () => mutation.mutate({ ...item, first_name: name }); // Triggers the mutation (PUT call)
 
@@ -55,10 +53,7 @@ export default () => {
     <Row gutter={[0, 8]}>
       <Col xs={24}>
         {!isQueryLoading && !isMutationLoading && (
-          <Alert
-            message={`Fetched username: ${item?.first_name}`}
-            type="info"
-          />
+          <Alert message={`Fetched username: ${item.first_name}`} type="info" />
         )}
       </Col>
       <Col xs={24}>
@@ -76,7 +71,7 @@ export default () => {
           }
         >
           <Meta
-            avatar={<Avatar src={item?.avatar} />}
+            avatar={<Avatar src={item.avatar} />}
             title={
               isQueryLoading || isMutationLoading ? (
                 <Skeleton />
@@ -84,7 +79,7 @@ export default () => {
                 <Paragraph editable={{ onChange: setName }}>{name}</Paragraph>
               )
             }
-            description={item?.email}
+            description={item.email}
           />
         </Card>
       </Col>
